@@ -1,24 +1,21 @@
 import { createUseStyles } from "react-jss"
+import { GlobalTheme, useTheme  } from "../hooks"
 
-const useStyles = createUseStyles({
-    graphVisualizer: {
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "lightblue",
-    },
-    graphVisualizerTitle: {
-        fontSize: "2rem",
-        fontWeight: "bold",
-        color: "white",
-        textAlign: "center",
-    },
+const useStyles = createUseStyles((theme: GlobalTheme) => {
+	return ({
+		graphVisualizer: {
+			width: "100vw",
+			height: "100vh",
+			backgroundColor: theme.colorBgBase
+		},
+	})
 })
 
 export const GraphVisualizer = () => {
-    const classes = useStyles()
+	const theme = useTheme()
+    const classes = useStyles({ theme })
     return (
         <div className={classes.graphVisualizer}>
-            <p className={classes.graphVisualizerTitle}>Here will be the Graph Visualizer...</p>
         </div>
     )
 }
