@@ -1,5 +1,5 @@
 import { observer } from "mobx-react"
-import { Vertex as Vertice } from "../../graph"
+import { Vertex as Vertice } from "../../models"
 import { Tooltip } from "antd"
 import { createUseStyles } from "react-jss"
 import { GlobalTheme, useTheme } from "../../hooks"
@@ -30,7 +30,7 @@ const useStyle = createUseStyles((theme: GlobalTheme) => {
 })
 
 export interface VertexProps {
-	vertex: Vertice<unknown>
+	vertex: Vertice
 	id: number
 }
 

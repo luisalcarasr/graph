@@ -1,17 +1,17 @@
 import { action, makeAutoObservable } from "mobx";
-import { Edge, Vertex } from "../graph";
+import { Edge, Vertex } from "../models";
 
 export class GraphStore {
 
 	/**
 	 * The vertices of the graph.
 	 */
-	vertices: Vertex<unknown>[] = [];
+	vertices: Vertex[] = [];
 
 	/**
 	 * The edges of the graph.
 	 */
-	edges: Edge<unknown>[] = [];
+	edges: Edge[] = [];
 
 
 	constructor() {
@@ -22,7 +22,7 @@ export class GraphStore {
 	 * Adds a vertex to the graph.
 	 */
 	@action
-	addVertex(vertex: Vertex<unknown> = new Vertex()) {
+	addVertex(vertex: Vertex = new Vertex()) {
 		this.vertices.push(vertex);
 		return vertex;
 	}
@@ -33,7 +33,7 @@ export class GraphStore {
 	 * @returns The edge that was added.
 	 */
 	@action
-	addEdge(edge: Edge<unknown>) {
+	addEdge(edge: Edge) {
 		edge.source.addEdge(edge);
 		edge.target.addEdge(edge);
 		this.edges.push(edge);

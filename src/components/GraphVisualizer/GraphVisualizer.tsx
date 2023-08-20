@@ -1,10 +1,11 @@
 import { createUseStyles } from "react-jss"
-import { GlobalTheme, useTheme  } from "../../hooks"
+import { GlobalTheme, useTheme } from "../../hooks"
 import { useGraphStore } from "../../hooks/useGraphStore"
 import { observer } from "mobx-react"
 import { Vertex } from "./Vertex"
 import { useEffect } from "react"
 import { Edge } from "./Edge"
+import { Edge as Arista } from "../../models"
 
 const useStyles = createUseStyles((theme: GlobalTheme) => {
 	return ({
@@ -31,7 +32,7 @@ export const GraphVisualizer = observer(() => {
 	useEffect(() => {
 		const source = store.addVertex()
 		const target = store.addVertex()
-		store.addEdge({source, target})
+		store.addEdge(new Arista(source, target, 1))
 	}, [store])
 
     return (
