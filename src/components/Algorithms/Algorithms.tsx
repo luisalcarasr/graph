@@ -1,5 +1,7 @@
 import { Card } from "antd"
+import { observer } from "mobx-react"
 import { createUseStyles } from "react-jss"
+import { useGraphStore } from "../../hooks/useGraphStore"
 
 const useStyles = createUseStyles({
 	algorithms: {
@@ -12,9 +14,13 @@ const useStyles = createUseStyles({
 	}
 })
 
-export const Algorithms = () => {
+export const Algorithms = observer(() => {
+	const store = useGraphStore()
 	const classes = useStyles()
 	return (
-		<Card rootClassName={classes.algorithms}></Card>
+		<Card rootClassName={classes.algorithms}>
+			<p>Vertices: {store.vertices.length}</p>
+			<p>Edges: {store.edges.length}</p>
+		</Card>
 	)
-}
+})

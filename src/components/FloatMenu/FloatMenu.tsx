@@ -1,13 +1,13 @@
 import { FloatButton } from "antd"
-import { QuestionCircleOutlined, SyncOutlined } from "@ant-design/icons"
+import { PlusOutlined } from "@ant-design/icons"
+import { observer } from "mobx-react"
+import { useGraphStore } from "../../hooks/useGraphStore"
 
-export const FloatMenu = () => {
+export const FloatMenu = observer(() => {
+	const store = useGraphStore()
 	return (
 		<FloatButton.Group shape="square" style={{ right: 24 }} >
-			<FloatButton icon={<QuestionCircleOutlined />} />
-			<FloatButton />
-			<FloatButton icon={<SyncOutlined />} />
-			<FloatButton.BackTop visibilityHeight={0} />
+			<FloatButton icon={<PlusOutlined />} onClick={() => store.addVertex()} />
 		</FloatButton.Group>
 	)
-}
+})

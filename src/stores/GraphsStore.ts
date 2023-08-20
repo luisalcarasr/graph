@@ -22,8 +22,9 @@ export class GraphStore {
 	 * Adds a vertex to the graph.
 	 */
 	@action
-	addVertex(vertex: Vertex<unknown>) {
+	addVertex(vertex: Vertex<unknown> = new Vertex()) {
 		this.vertices.push(vertex);
+		return vertex;
 	}
 
 	/**

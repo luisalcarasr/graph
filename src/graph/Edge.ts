@@ -1,6 +1,8 @@
 import { Vertex } from ".";
+import { v4 as uuid } from "uuid";
 
 export class Edge<T> {
+	uuid: string = uuid();
 	source: Vertex<unknown>;
 	target: Vertex<unknown>;
 	weight?: number;
