@@ -1,10 +1,10 @@
-import { Ref, createRef } from "react";
-import { Edge } from ".";
+import { createRef } from "react";
 import { v4 as uuid } from "uuid";
+import { Edge } from ".";
 
 export class Vertex<T = unknown> {
 	uuid: string = uuid();
-	ref: Ref<HTMLSpanElement> = createRef();
+	ref = createRef<HTMLSpanElement>();
 	edges: Edge[] = [];
 	meta?: T;
 
@@ -15,5 +15,4 @@ export class Vertex<T = unknown> {
 	addEdge(edge: Edge) {
 		this.edges.push(edge);
 	}
-
 }
